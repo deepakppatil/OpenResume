@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Deepak Patil | Head of Software Engineering</title>
+    <meta
+      name="description"
+      content="Portfolio and interactive CV of Deepak Patil, Head of Software Engineering at Nomura — enterprise architecture, distributed systems, cloud-native platforms and AI."
+    />
+    <meta name="author" content="Deepak Patil" />
+    <meta name="theme-color" content="#fafaf9" />
+    <link rel="canonical" href="https://deepakppatil.github.io/OpenResume/" />
+
+    <!-- Favicon (inline SVG, no extra request) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' text-anchor='middle' fill='white'%3EDP%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Deepak Patil" />
+    <meta property="og:title" content="Deepak Patil | Head of Software Engineering" />
+    <meta
+      property="og:description"
+      content="Interactive CV and portfolio: enterprise architecture, distributed systems, cloud-native platforms and AI platform engineering across 19+ years."
+    />
+    <meta property="og:url" content="https://deepakppatil.github.io/OpenResume/" />
+    <meta property="og:image" content="https://deepakppatil.github.io/OpenResume/images/og-image.jpg" />
+    <meta property="og:image:alt" content="Abstract dark teal background for the portfolio of Deepak Patil" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Deepak Patil | Head of Software Engineering" />
+    <meta
+      name="twitter:description"
+      content="Interactive CV and portfolio: enterprise architecture, distributed systems, cloud-native platforms and AI platform engineering across 19+ years."
+    />
+    <meta name="twitter:image" content="https://deepakppatil.github.io/OpenResume/images/og-image.jpg" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Deepak Patil",
+        "jobTitle": "Head of Software Engineering",
+        "url": "https://deepakppatil.github.io/OpenResume/",
+        "email": "mailto:deepak.p.patil@gmail.com",
+        "telephone": "+919930870299",
+        "image": "https://deepakppatil.github.io/OpenResume/images/og-image.jpg",
+        "worksFor": { "@type": "Organization", "name": "Nomura" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Mumbai", "addressRegion": "Maharashtra", "postalCode": "421301", "addressCountry": "IN" },
+        "knowsAbout": [
+          "Enterprise architecture",
+          "Distributed systems",
+          "Cloud-native platforms",
+          "Kubernetes",
+          "AI platform architecture",
+          "Context engineering",
+          "Trade finance",
+          "Payments technology"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/depatil",
+          "https://github.com/deepakppatil"
+        ]
+      }
+    </script>
+
+    <!-- Fonts: Inter (body) + JetBrains Mono (labels). Falls back to system fonts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Apply saved theme before first paint (light is the default) -->
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark");
+            var m = document.querySelector('meta[name="theme-color"]');
+            if (m) m.setAttribute("content", "#0d0f0f");
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui, sans-serif">
+        This interactive CV needs JavaScript. Deepak Patil — Head of Software Engineering, Nomura, Mumbai, India.
+        Contact: deepak.p.patil@gmail.com
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

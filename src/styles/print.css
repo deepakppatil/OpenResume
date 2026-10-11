@@ -1,0 +1,98 @@
+/* ------------------------------------------------------------------
+   Print-friendly CV layout.
+   Unlayered rules here intentionally override Tailwind's layered utilities.
+------------------------------------------------------------------- */
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 14mm 16mm;
+  }
+
+  /* Always print on white with dark ink, regardless of the chosen theme */
+  html,
+  html.dark {
+    color-scheme: light;
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f4f4f3;
+    --line: #d4d6d3;
+    --ink: #111312;
+    --muted: #3f4543;
+    --accent: #0f766e;
+    --accent-strong: #0f766e;
+    --accent-hover: #0f766e;
+    --accent-fg: #ffffff;
+    --accent-soft: #e4f3f0;
+    --accent-soft-fg: #0b524c;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    font-size: 10.5pt;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+
+  /* Reveal everything */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .collapsible {
+    grid-template-rows: 1fr !important;
+  }
+  .collapsible > div {
+    visibility: visible !important;
+  }
+  .collapsible[inert] {
+    display: grid;
+  }
+
+  /* Compact sections */
+  main section {
+    padding-top: 14pt !important;
+    padding-bottom: 6pt !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  .card,
+  article,
+  li {
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  /* Show destination for external links so the printed CV stays useful */
+  a[data-print-url]::after {
+    content: " (" attr(data-print-url) ")";
+    font-size: 8.5pt;
+    color: #444;
+    word-break: break-all;
+  }
+}
