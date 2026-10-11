@@ -16,7 +16,7 @@
 
 export const profile = {
   name: "Deepak Patil",
-  initials: "DP",
+  initials: "dp",
   title: "Head of Software Engineering",
   organization: "Nomura",
   headline: "Modernize the past. Engineer the future.",
@@ -66,29 +66,36 @@ export const profile = {
 
   strengths: [
     {
+      icon: "users",
+      title: "Engineering Leadership",
+      description:
+        "Engineering strategy, architecture standards, code-review discipline, mentorship and stakeholder management across global engineering teams.",
+    },
+    {
       icon: "layers",
-      title: "Enterprise architecture",
+      title: "Enterprise Architecture",
       description:
         "Enterprise architecture across IaaS, PaaS and SaaS, with the governance and standards that keep applications aligned to global standards and business objectives.",
     },
     {
       icon: "cloud",
-      title: "Cloud-native platforms",
+      title: "Cloud-native Platforms",
       description:
         "Kubernetes, platform engineering, orchestration (Swarm, Mesos, Terraform) and Dev-Ops / AI-SRE practices for portable, observable and resilient systems.",
     },
     {
       icon: "sparkles",
-      title: "AI platform architecture",
+      title: "AI Enterprise Strategy",
       description:
-        "AI/ML, NLP, OCR and predictive analytics, plus agentic development and Context Engineering for AI-native systems.",
+        "Applied Machine Learning, Artificial Intelligence, NLP, OCR and predictive analytics, plus agentic development and Context Engineering for AI-native systems.",
     },
+
     {
       icon: "users",
-      title: "Engineering leadership",
+      title: "IaaS, PaaS & SaaS",
       description:
         "Engineering strategy, architecture standards, code-review discipline, mentorship and stakeholder management across global engineering teams.",
-    },
+    },    
   ],
 
   facts: [
@@ -103,7 +110,7 @@ export const profile = {
   // "Outside work" (About section)
   interests: [
     {
-      icon: "compass",
+      icon: "cylinder",
       title: "PADI — Professional Dive Master",
       description: "Professional-level scuba diving certification.",
     },
@@ -113,7 +120,7 @@ export const profile = {
       description: "Licensed paragliding pilot.",
     },
     {
-      icon: "High-altitude mountaineering",
+      icon: "mountain",
       title: "Multiple 6000+ meter summits",
       description: "High-altitude mountaineering and Himalayan expeditions.",
     },
