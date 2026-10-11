@@ -21,7 +21,7 @@
 
 ## 🌱 Overview
 
-This project is the personal portfolio and interactive CV for Deepak Patil — a modern single-page experience for presenting leadership, engineering architecture, distributed systems work, and AI platform thinking.
+This project is the personal portfolio and interactive CV — a modern single-page experience for presenting leadership, engineering architecture, distributed systems work, and AI platform thinking.
 
 The site is designed as a fast, static, searchable profile with strong information architecture: a concise headline, executive summary, multi-role experience, projects, skills, certifications, achievements, and contact CTA. It is optimized for GitHub Pages and works well as a personal landing page for recruiters, hiring teams, and collaborators.
 
