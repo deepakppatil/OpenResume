@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,7 @@
       content="Portfolio and interactive CV of Deepak Patil, Head of Software Engineering at Nomura — enterprise architecture, distributed systems, cloud-native platforms and AI."
     />
     <meta name="author" content="Deepak Patil" />
-    <meta name="theme-color" content="#fafaf9" />
+    <meta name="theme-color" content="#0d0f0f" />
     <link rel="canonical" href="https://deepakppatil.github.io/OpenResume/" />
 
     <!-- Favicon (inline SVG, no extra request) -->
@@ -79,16 +79,18 @@
       rel="stylesheet"
     />
 
-    <!-- Apply saved theme before first paint (light is the default) -->
+    <!-- Apply the saved theme before first paint; dark is the default. -->
     <script>
       (function () {
+        var theme = "dark";
         try {
-          if (localStorage.getItem("theme") === "dark") {
-            document.documentElement.classList.add("dark");
-            var m = document.querySelector('meta[name="theme-color"]');
-            if (m) m.setAttribute("content", "#0d0f0f");
-          }
-        } catch (e) {}
+          theme = localStorage.getItem("theme") || "dark";
+        } catch (e) {
+          // Keep the default dark theme when storage is unavailable.
+        }
+        document.documentElement.classList.toggle("dark", theme !== "light");
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", theme === "light" ? "#fafaf9" : "#0d0f0f");
       })();
     </script>
   </head>

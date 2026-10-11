@@ -1,4 +1,5 @@
 import { ArrowUp, Mail } from "lucide-react";
+import packageJson from "../../package.json";
 import { profile } from "@/data/profile";
 import { formatLongDate } from "@/utils/dates";
 import { GithubIcon, LinkedinIcon } from "./icons";
@@ -14,6 +15,7 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} <span className="font-semibold text-ink">{profile.name}</span>. All rights reserved.
           </p>
+          <p>Version: {packageJson.version}</p>
           <p>
             Last updated: <time dateTime={profile.lastUpdated}>{formatLongDate(profile.lastUpdated)}</time>
           </p>

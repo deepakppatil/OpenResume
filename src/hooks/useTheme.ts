@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 export type Theme = "light" | "dark";
 
 /**
- * Light is the default theme. The visitor's choice is persisted in localStorage and applied
+ * Dark is the default theme. The visitor's choice is persisted in localStorage and applied
  * before first paint by an inline script in index.html (prevents a flash of the wrong theme).
  */
 export function useTheme() {
