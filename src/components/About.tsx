@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import {
   Cloud,
+  ExternalLink,
   Footprints,
   Layers,
   Sparkles,
@@ -10,6 +11,7 @@ import {
   type LucideProps,
 } from "lucide-react";
 import { profile } from "@/data/profile";
+import { prettyUrl } from "@/utils/assets";
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
@@ -142,7 +144,7 @@ export function About() {
       </ul>
 
       <h3 className="mt-14 mb-5 text-xl font-semibold text-ink">Outside work</h3>
-      <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
         {profile.interests.map((interest, i) => {
           const Icon = INTEREST_ICONS[interest.icon] ?? MountainIcon;
           return (
@@ -152,7 +154,23 @@ export function About() {
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent" aria-hidden="true">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <h4 className="min-w-0 text-sm font-semibold leading-snug text-ink">{interest.title}</h4>
+                  <h4 className="min-w-0 text-sm font-semibold leading-snug text-ink">
+                    {interest.url ? (
+                      <a
+                        href={interest.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-print-url={prettyUrl(interest.url)}
+                        aria-label={`${interest.title} (opens in a new tab)`}
+                        className="inline-flex items-center gap-1.5 hover:text-accent"
+                      >
+                        {interest.title}
+                        <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                      </a>
+                    ) : (
+                      interest.title
+                    )}
+                  </h4>
                 </div>
                 <p className="mt-3 text-xs leading-relaxed text-muted">{interest.description}</p>
               </Reveal>

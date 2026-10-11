@@ -125,9 +125,10 @@ export const profile = {
       description: "High-altitude mountaineering and Himalayan expeditions.",
     },
     {
-      icon: "footprints",
-      title: "Ultra Marathoner",
-      description: "Long-distance and ultra-distance running.",
+      icon: "tree",
+      title: "Farming & Permaculture",
+      description: "Sustainable agriculture and ecological design.",
+      url: "https://nimbonifarm.com",
     },
   ],
 };
