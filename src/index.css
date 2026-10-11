@@ -6,7 +6,7 @@
 
 /* ------------------------------------------------------------------
    Design tokens — neutral surfaces + ONE accent colour (teal).
-   Light is the default theme. All text/background pairs meet WCAG AA.
+   Dark is the default theme. All text/background pairs meet WCAG AA.
 ------------------------------------------------------------------- */
 :root {
   color-scheme: light;

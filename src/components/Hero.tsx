@@ -122,10 +122,10 @@ export function Hero() {
           </ul>
         </div>
 
-        <div className="fade-up order-1 mx-auto w-full max-w-[17rem] sm:max-w-sm lg:order-2 lg:max-w-md" style={{ "--d": "200ms" } as React.CSSProperties}>
+        <div className="fade-up order-1 mx-auto w-full max-w-68 sm:max-w-sm lg:order-2 lg:max-w-md" style={{ "--d": "200ms" } as React.CSSProperties}>
           <div className="relative">
             <div
-              className="absolute -inset-3 translate-x-3 translate-y-3 rounded-[2rem] border border-accent/40 bg-accent-soft"
+              className="absolute -inset-3 translate-x-3 translate-y-3 rounded-4xl border border-accent/40 bg-accent-soft"
               aria-hidden="true"
             />
             <img
@@ -135,7 +135,7 @@ export function Hero() {
               height={640}
               fetchPriority="high"
               decoding="async"
-              className="relative aspect-square w-full rounded-[2rem] border border-line object-cover shadow-xl"
+              className="relative aspect-square w-full rounded-4xl border border-line object-cover shadow-xl"
             />
             <div className="absolute -bottom-5 left-4 flex items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-3 shadow-lg sm:-left-6">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-soft text-accent" aria-hidden="true">
