@@ -2,11 +2,14 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    tags:
+      - "v*.*.*"
   workflow_dispatch:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
@@ -17,16 +20,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
       - run: npm ci
       - run: npm run build
+      # Single-page site: hash links only, no router. Serving the app on a
+      # bad URL beats GitHub's bare 404 page.
+      - name: Add 404 fallback
+        run: cp dist/index.html dist/404.html
+      - uses: actions/configure-pages@v5        
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-
+         
   deploy:
     needs: build
     runs-on: ubuntu-latest
