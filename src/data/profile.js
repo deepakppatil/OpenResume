@@ -48,7 +48,7 @@ export const profile = {
   resumeUrl: "",
   resumeFileName: "Deepak-Patil-Resume.pdf",
 
-  siteUrl: "https://deepakppatil.github.io/",
+  siteUrl: "https://deepakppatil.github.io/OpenResume/",
   lastUpdated: "2026-10-11",
 
   social: {
