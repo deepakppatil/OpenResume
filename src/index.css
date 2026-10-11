@@ -1,0 +1,255 @@
+@import "tailwindcss";
+@import "./styles/print.css";
+
+/* Class-based dark mode: <html class="dark"> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------
+   Design tokens — neutral surfaces + ONE accent colour (teal).
+   Light is the default theme. All text/background pairs meet WCAG AA.
+------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --surface-2: #f2f3f0;
+  --line: #e1e3de;
+  --ink: #181b1a;
+  --muted: #545a58;
+  --accent: #0f766e;
+  --accent-strong: #0f766e;
+  --accent-hover: #115e59;
+  --accent-fg: #ffffff;
+  --accent-soft: #e4f3f0;
+  --accent-soft-fg: #0b524c;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0d0f0f;
+  --surface: #151818;
+  --surface-2: #1b1f1f;
+  --line: #2a3130;
+  --ink: #eceff0;
+  --muted: #a3acab;
+  --accent: #5eead4;
+  --accent-strong: #2dd4bf;
+  --accent-hover: #5eead4;
+  --accent-fg: #04201d;
+  --accent-soft: #11302d;
+  --accent-soft-fg: #99f6e4;
+}
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-soft-fg: var(--accent-soft-fg);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem; /* matches the sticky header height */
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  button:not(:disabled),
+  [role="button"],
+  select {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--accent-soft-fg);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-surface;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .card-hover:hover {
+    border-color: color-mix(in oklab, var(--accent) 45%, var(--line));
+    box-shadow: 0 10px 30px -14px color-mix(in oklab, var(--accent) 35%, transparent);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold whitespace-nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-sm {
+    @apply px-4 py-2;
+  }
+  .btn-primary {
+    @apply bg-accent-strong text-accent-fg hover:bg-accent-hover;
+  }
+  .btn-secondary {
+    @apply border border-line bg-surface text-ink hover:border-accent hover:text-accent;
+  }
+  .btn-ghost {
+    @apply text-ink hover:bg-surface-2;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-md bg-accent-soft px-2.5 py-1 font-mono text-xs font-medium text-accent-soft-fg;
+  }
+  .chip-neutral {
+    @apply inline-flex items-center rounded-md bg-surface-2 px-2.5 py-1 font-mono text-xs font-medium text-muted;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs font-semibold tracking-[0.18em] text-accent uppercase;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink placeholder:text-muted/70;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field:hover {
+    border-color: color-mix(in oklab, var(--accent) 40%, var(--line));
+  }
+  .field[aria-invalid="true"] {
+    border-color: #dc2626;
+  }
+  .dark .field[aria-invalid="true"] {
+    border-color: #f87171;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Motion — all subtle, CSS-only, and disabled for reduced-motion users
+------------------------------------------------------------------- */
+
+/* Scroll reveal: gentle fade + rise (content stays legible if JS/IO is unavailable) */
+.reveal {
+  opacity: 0.45;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* Hero entrance */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+/* Filtered project cards */
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.card-in {
+  animation: card-in 0.35s ease both;
+}
+
+/* Expand / collapse (grid-rows trick → smooth height without measuring) */
+.collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+.collapsible[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.collapsible > div {
+  min-height: 0;
+  overflow: hidden;
+}
+.collapsible[data-open="false"] > div {
+  visibility: hidden;
+  transition: visibility 0s linear 0.3s;
+}
+
+/* Decorative hero backdrop */
+.hero-bg {
+  background-image:
+    radial-gradient(60% 50% at 85% 0%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 70%),
+    radial-gradient(40% 40% at 0% 30%, color-mix(in oklab, var(--accent) 8%, transparent), transparent 70%);
+}
+.grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at 70% 10%, #000 0%, transparent 65%);
+  -webkit-mask-image: radial-gradient(ellipse at 70% 10%, #000 0%, transparent 65%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .fade-up,
+  .card-in {
+    animation: none;
+  }
+  .collapsible,
+  .collapsible[data-open="false"] > div {
+    transition: none;
+  }
+  body {
+    transition: none;
+  }
+}
