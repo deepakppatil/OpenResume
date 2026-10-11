@@ -201,6 +201,55 @@
   animation: card-in 0.35s ease both;
 }
 
+@keyframes current-marker-beat {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent-strong) 35%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 5px transparent;
+  }
+}
+.experience-current-marker {
+  animation: current-marker-beat 1.8s ease-in-out infinite;
+}
+
+@keyframes experience-rail-rise {
+  0% {
+    opacity: 0;
+    top: calc(100% - 7px);
+  }
+  12%,
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: 0;
+  }
+}
+.experience-rail-runner {
+  position: absolute;
+  top: calc(100% - 7px);
+  left: 50%;
+  width: 2px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent-strong);
+  animation: experience-rail-rise 3.2s ease-in-out infinite;
+}
+.experience-rail-runner::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-strong);
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
 /* Expand / collapse (grid-rows trick → smooth height without measuring) */
 .collapsible {
   display: grid;
@@ -242,7 +291,9 @@
     transition: none;
   }
   .fade-up,
-  .card-in {
+  .card-in,
+  .experience-current-marker,
+  .experience-rail-runner {
     animation: none;
   }
   .collapsible,

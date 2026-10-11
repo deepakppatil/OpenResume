@@ -95,7 +95,9 @@ export function Experience() {
     >
       {/* Details view (always shown when printing) */}
       <ol className={cn("relative space-y-6", view !== "details" && "hidden print:block print:space-y-4")}>
-        <span className="absolute top-3 bottom-3 left-[11px] w-px bg-line sm:left-[15px]" aria-hidden="true" />
+        <span className="experience-rail absolute top-3 bottom-3 left-[11px] w-px bg-line sm:left-[15px]" aria-hidden="true">
+          <span className="experience-rail-runner" />
+        </span>
         {experience.map((job, i) => {
           const isOpen = open.has(i);
           const panelId = `exp-panel-${i}`;
@@ -106,7 +108,7 @@ export function Experience() {
               <span
                 className={cn(
                   "absolute top-7 left-0 flex h-6 w-6 items-center justify-center rounded-full border-2 bg-bg sm:left-1 ",
-                  current ? "border-accent-strong" : "border-line",
+                  current ? "experience-current-marker border-accent-strong" : "border-line",
                 )}
                 aria-hidden="true"
               >
